@@ -17,6 +17,10 @@ class ContainerSprite extends Phaser.Sprite {
 
 	clickHandler(sender, pointer) {
 		this.game.clicks++;
+
+		this.game.add.tween(this.scale).to({x: 0.96, y: 0.96}, 100, Phaser.Easing.Cubic.Out, true)
+    	this.game.add.tween(this.scale).to({x: 1, y: 1}, 100, Phaser.Easing.Cubic.Out, true, 200)
+
 		this.game.clickEmitter.emitParticle(pointer.x, pointer.y);
 	}
 }
