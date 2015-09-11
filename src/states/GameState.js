@@ -1,22 +1,29 @@
 import RainbowText from '../objects/RainbowText';
 import ContainerSprite from '../objects/ContainerSprite';
 import ClickEmitter from '../objects/ClickEmitter';
+import ScoreObject from '../ScoreObject';
 
 class GameState extends Phaser.State {
 
 	create() {
 		this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-		this.scoreText = new RainbowText(this.game, this.game.world.centerX, 25);
+
+		this.game.events = this.game.events || {};
+		this.game.events.cacheClick = new Phaser.Signal();
+
+
+		this.scoreText = new RainbowText(this.game);
 
 		this.container = new ContainerSprite(this.game);
 		
 		this.game.clickEmitter = new ClickEmitter(this.game);
 
 
-		this.stage.disableVisibilityChange = true;
+		this.game.score = new ScoreObject(this.game);
 
-		this.game.clicks = 0;
+
+		this.stage.disableVisibilityChange = true;
 	}
 
 	preload() {

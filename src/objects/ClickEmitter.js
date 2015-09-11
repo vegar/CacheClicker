@@ -11,13 +11,15 @@ class ClickEmitter extends Phaser.Particles.Arcade.Emitter {
     this.lifespan = 5000;
     this.setYSpeed(-50, -200);
 
-	this.game.stage.addChild(this);  
+	  this.game.stage.addChild(this);  
+
+    this.game.events.cacheClick.add(this.emitParticle, this);
   }
 
   // methods
-  emitParticle(x, y){
-  	this.emitX = x;
-  	this.emitY = y;
+  emitParticle(point){
+  	this.emitX = point.x;
+  	this.emitY = point.y;
   	super.emitParticle();
   }
 }
