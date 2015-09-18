@@ -6,9 +6,9 @@ class ClickEmitter extends Phaser.Particles.Arcade.Emitter {
     //this.emitter = game.add.emitter(game.world.centerX, game.world.centerY);
 
     this.makeParticles('containerParticle');
-    this.setAlpha(1, 0, 5000);
+    this.setAlpha(1, 0, 1000);
     this.gravity = 200;
-    this.lifespan = 5000;
+    this.lifespan = 1000;
     this.setYSpeed(-50, -200);
 
 	  this.game.stage.addChild(this);  

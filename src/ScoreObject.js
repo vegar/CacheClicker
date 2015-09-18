@@ -7,6 +7,8 @@ class ScoreObject  {
     this.caches = 0;
     this.cachesEarned = 0;
 
+    this.computedMouseCps = 1;
+
     this.game.events.cacheClick.add(this.countClick, this);
   }
 
@@ -20,17 +22,17 @@ class ScoreObject  {
   }
 
   earn(caches) {
-	this.caches++;
-  	this.cachesEarned++;
+	this.caches+=caches;
+  	this.cachesEarned+=caches;
   }
 
   spend(caches) {
-
+  	this.caches-=caches;
   }
 
   countClick() {
   	this.cacheClicks++;
-  	this.earn(1);
+  	this.earn(this.computedMouseCps);
   }
 }
 
